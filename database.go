@@ -40,7 +40,7 @@ func AddGPUStats(database *sql.DB, v cgminerapi.Devs) error {
 	}
 	defer stmt.Close()
 
-	_, err = stmt.Exec(time.Now().Unix(), int(v.GPU), v.Temperature, int(v.FanSpeed), v.FanPercent, v.MHS5s, int(v.GPUClock), int(v.MemoryClock), v.GPUVoltage)
+	_, err = stmt.Exec(time.Now().Unix(), *v.GPU, v.Temperature, int(v.FanSpeed), v.FanPercent, v.MHS5s, int(v.GPUClock), int(v.MemoryClock), v.GPUVoltage)
 	if err != nil {
 		return err
 	}

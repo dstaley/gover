@@ -52,29 +52,29 @@ func updateMobileminer() {
 			println("52")
 		}
 		var arr []MobileminerAPIJSON
-		for i, v := range res.Devs {
+		for _, v := range res.Devs {
 			var data MobileminerAPIJSON
 			data.AcceptedShares = v.Accepted
 			data.Algorithm = "Scrypt"
 			data.AverageHashrate = v.MHSav
 			data.CurrentHashrate = v.MHS5s
-			data.DeviceID = i
+			data.DeviceID = *v.GPU
 			data.Enabled = true
 			data.FanPercent = v.FanPercent
 			data.FanSpeed = v.FanSpeed
-			data.FullName = "GPU " + strconv.Itoa(i)
+			data.FullName = "GPU " + strconv.Itoa(*v.GPU)
 			data.GpuActivity = v.GPUActivity
 			data.GpuClock = v.GPUClock
 			data.GpuVoltage = v.GPUVoltage
 			data.HardwareErrors = 1
 			data.HardwareErrorsPercent = 1
-			data.Index = i
+			data.Index = *v.GPU
 			data.Intensity = v.Intensity
 			data.Kind = "GPU"
 			data.MemoryClock = v.MemoryClock
 			data.MinerName = "Gover"
-			data.Name = "GPU " + strconv.Itoa(i)
-			data.PowerTune = v.Powertune
+			data.Name = "GPU " + strconv.Itoa(*v.GPU)
+			data.PowerTune = *v.Powertune
 			data.RejectedShares = v.Rejected
 			data.RejectedSharesPercent = 1
 			data.Status = v.Status
